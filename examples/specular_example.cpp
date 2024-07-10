@@ -4,6 +4,8 @@
 #include <functional>
 #include <iostream>
 
+#include "specular.h"
+
 int main(void)
 {
 	using T = double;
@@ -29,4 +31,13 @@ int main(void)
 
 	std::cout << "Final Distance: " << result.f_opt << std::endl;
 	std::cout << "Iterations: " << result.iter << std::endl;
+
+	
+	Eigen::Vector<T,3> specpoint;
+	for (int i = 0; i < 50*86400; i++)
+		specpoint = get_specular_point(t,r,a,b);
+
+	std::cout << "Final Distance: " << result.f_opt << std::endl;
+	std::cout << "Iterations: " << result.iter << std::endl;
+	
 }

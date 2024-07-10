@@ -1,3 +1,6 @@
+#ifndef specular_functions_h
+#define specular_functions_h
+
 #include <Eigen/Dense>
 #include <cmath>
 
@@ -170,4 +173,4 @@ void specular_hessian(const Eigen::Matrix<T, 4, 1>& x, const Eigen::Matrix<T, 3,
 
     hess(3,3) = 0;
 }
-
+#endif

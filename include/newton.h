@@ -1,3 +1,6 @@
+#ifndef newton_h
+#define newton_h
+
 #include <Eigen/Dense>
 #include <functional>
 #include <cmath>
@@ -74,4 +77,4 @@ Result<T, Dim> newtons_method_fast(Func const& f, Grad const& grad_f, Hess const
 
     return result;
 }
-
+#endif
