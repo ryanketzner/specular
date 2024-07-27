@@ -4,9 +4,20 @@
 #include <Eigen/Dense>
 #include <cmath>
 
-
 template <typename T>
 Eigen::Matrix<T,4,1> get_x0(const Eigen::Matrix<T, 3, 1>& t, const Eigen::Matrix<T, 3, 1>& r, T a, T b)
+{
+    // Project onto ellipsoid
+    T scale = sqrt(r(0)*r(0) / (a*a) + r(1)*r(1) / (a*a) + r(2)*r(2) / (b*b));
+
+    Eigen::Vector<T,4> result;
+    result << r/scale, 0.0;
+
+    return result;
+}
+
+template <typename T>
+Eigen::Matrix<T,4,1> get_x0_mid(const Eigen::Matrix<T, 3, 1>& t, const Eigen::Matrix<T, 3, 1>& r, T a, T b)
 {
 	Eigen::Vector<T,3> midpoint = (t+r)/2.0;
 	T scale = sqrt(midpoint(0)*midpoint(0) / (a*a) + midpoint(1)*midpoint(1) / (a*a) + midpoint(2)*midpoint(2) / (b*b));
